@@ -5,26 +5,29 @@ import '../Trending/Trending.css'
 import CustomPagination from '../../CustomPagination/CustomPagination'
  
 const Movies = () => {
-    const[trendData, setTrendData]= useState([])
+    const[movieData, setMovieData]= useState([])
     const [page,setPage] = useState(1)
+    const [num, setNum] =useState(10)
      useEffect(() => {
         axios
-        .get(`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`)
+        .get(` https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`)
+       
         .then(response=>{
-            setTrendData(response.data.results)
+            setMovieData(response.data.results)
+            setNum(response.data.total_pages)
         })
          
      }, [page])
-     console.log("Trend Data",trendData)
+     console.log("Movie Data",movieData)
       return (
           <div>
-           <span className="pageTitle">Trending</span>
+           <span className="pageTitle">Movies</span>
            <div className='trending'>
-               {trendData && trendData.map(i=>(
-                   <SingleContent key={i.id} id={i.id} poster={i.poster_path} title={i.title || i.name} date={i.first_air_date || i.release_date} media_type={i.media_type} vote_average={i.vote_average}  />
+               {movieData && movieData.map(i=>(
+                   <SingleContent key={i.id} id={i.id} poster={i.poster_path} title={i.title || i.name} date={i.first_air_date || i.release_date} media_type="movie" vote_average={i.vote_average}  />
                ))} 
          </div>
-         <CustomPagination setPage={setPage}/>  
+         <CustomPagination setPage={setPage} num={num}/>  
           </div>
       )
  }

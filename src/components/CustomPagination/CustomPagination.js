@@ -8,7 +8,7 @@ const darkTheme = createMuiTheme({
 });
 
 
-const CustomPagination=({setPage})=> {
+const CustomPagination=({setPage,num})=> {
   
     const handleChange=(value)=>{
         setPage(value);
@@ -25,7 +25,7 @@ const CustomPagination=({setPage})=> {
     
     }}>
       <ThemeProvider theme={darkTheme}>
-      <Pagination count={10} variant="outlined" onChange={e=> handleChange(e.target.textContent)} hideNextButton hidePrevButton />
+      <Pagination count={num} variant="outlined" onChange={e=> handleChange(e.target.textContent)} hideNextButton hidePrevButton />
       </ThemeProvider>
     </div>
   );

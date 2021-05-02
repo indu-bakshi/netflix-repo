@@ -24,7 +24,7 @@ const Trending = () => {
                   <SingleContent key={i.id} id={i.id} poster={i.poster_path} title={i.title || i.name} date={i.first_air_date || i.release_date} media_type={i.media_type} vote_average={i.vote_average}  />
               ))} 
         </div>
-        <CustomPagination setPage={setPage}/>  
+        <CustomPagination setPage={setPage} num={10}/>  
          </div>
      )
  }
