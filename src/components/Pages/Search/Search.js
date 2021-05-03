@@ -79,9 +79,9 @@ useEffect(() => {
                
                
         </div>
-       
+        {numOfPage > 1 && (
         <CustomPagination setPage={setPage} num={numOfPage}/>
-        
+        )}
          </div>
   );
 }
