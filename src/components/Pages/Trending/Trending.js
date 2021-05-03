@@ -13,6 +13,8 @@ const Trending = () => {
        .then(response=>{
            setTrendData(response.data.results)
        })
+
+       window.scroll(0,0);
         
     }, [page])
     console.log("Trend Data",trendData)

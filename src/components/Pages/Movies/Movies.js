@@ -22,6 +22,8 @@ const Movies = () => {
       .then((response) => {
         setMovieData(response.data.results);
         setNum(response.data.total_pages);
+
+        window.scroll(0,0);
       });
   }, [genreforURL,page]);
 //   console.log("Movie Data", movieData);
