@@ -17,6 +17,7 @@ const Trending = () => {
        window.scroll(0,0);
         
     }, [page])
+   
     console.log("Trend Data",trendData)
      return (
          <div>
@@ -26,8 +27,8 @@ const Trending = () => {
                   <SingleContent key={i.id} id={i.id} poster={i.poster_path} title={i.title || i.name} date={i.first_air_date || i.release_date} media_type={i.media_type} vote_average={i.vote_average}  />
               ))} 
         </div>
-        {numOfPage > 1 && (
-        <CustomPagination setPage={setPage} num={10}/>  )}
+       
+        <CustomPagination setPage={setPage} num={10}/> 
          </div>
         
      )
