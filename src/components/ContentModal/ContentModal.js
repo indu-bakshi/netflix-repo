@@ -5,8 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import '../SingleContent/SingleContent.css'
 import axios from 'axios';
-
-import ResponsivePlayer from '../ResponsivePlayer/ResponsivePlayer';
+import ReactPlayer from 'react-player';
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -77,12 +76,16 @@ console.log("content", content)
         BackdropProps={{
           timeout: 500,
         }}
+        style={{maxHeight:"90vh"}}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p>
-            <ResponsivePlayer video={video}/>
+          <div className={classes.paper} style={{position:"relative"}} >
+           
+            <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${video}`}
+            width='100%' 
+            height={"100%"}
+          />
             
           </div>
         </Fade>
